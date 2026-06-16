@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhsina Tarannum Munfa — NLP & ML Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a2e;
+      --muted: #5c5c7a;
+      --accent: #7b5ea7;
+      --accent2: #3d9be9;
+      --bg: #f8f7f4;
+      --card: #ffffff;
+      --border: #e4e2dc;
+      --tag-bg: #ede9f6;
+      --tag-txt: #5a3e8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(248,247,244,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 58px;
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 110px 2rem 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .hero-bio {
+      font-size: 1rem;
+      color: #3a3a50;
+      max-width: 540px;
+      margin-bottom: 1.6rem;
+    }
+    .links-row {
+      display: flex; flex-wrap: wrap; gap: 0.7rem;
+    }
+    .link-pill {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      color: var(--ink);
+      background: var(--card);
+      transition: border-color .2s, color .2s;
+    }
+    .link-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .link-pill.primary {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .link-pill.primary:hover { background: #6a4d95; border-color: #6a4d95; color: #fff; }
+
+    .avatar-wrap {
+      width: 148px; height: 148px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      overflow: hidden;
+      background: linear-gradient(135deg, #ede9f6, #d8eaf8);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .avatar-placeholder {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: .6;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 2rem 0;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.4rem;
+      color: var(--ink);
+    }
+
+    /* ── INTEREST TAGS ── */
+    .interest-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-txt);
+      padding: 0.32rem 0.85rem;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1rem;
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: 0 4px 20px rgba(123,94,167,.1); }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .card-title { font-weight: 600; font-size: 0.98rem; color: var(--ink); }
+    .card-sub { font-size: 0.87rem; color: var(--muted); margin-top: 0.15rem; }
+    .card-date {
+      font-size: 0.8rem; color: var(--muted); white-space: nowrap;
+      font-weight: 500;
+    }
+    .card-body {
+      font-size: 0.88rem;
+      color: #444460;
+      margin-top: 0.7rem;
+    }
+    .card-body ul {
+      list-style: disc; padding-left: 1.2rem;
+    }
+    .card-body ul li { margin-bottom: 0.3rem; }
+
+    /* pub card */
+    .pub-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .pub-title { font-weight: 600; font-size: 0.96rem; color: var(--ink); }
+    .pub-authors { font-size: 0.83rem; color: var(--muted); margin: 0.25rem 0 0.4rem; }
+    .pub-badge {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 99px;
+      background: #e8f5e9; color: #2e7d32;
+    }
+    .pub-badge.review { background: #fff3e0; color: #e65100; }
+    .arxiv-link {
+      font-size: 0.8rem;
+      color: var(--accent2);
+      text-decoration: none;
+      margin-left: 0.6rem;
+    }
+    .arxiv-link:hover { text-decoration: underline; }
+
+    /* skills grid */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
+    .skill-group h4 { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 0.5rem; }
+    .skill-group p { font-size: 0.84rem; color: #444460; line-height: 1.6; }
+
+    /* project cards */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1rem; }
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      transition: box-shadow .2s;
+    }
+    .proj-card:hover { box-shadow: 0 4px 20px rgba(123,94,167,.1); }
+    .proj-name { font-weight: 600; font-size: 0.97rem; color: var(--ink); margin-bottom: 0.25rem; }
+    .proj-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .proj-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .proj-tool {
+      background: #eef2fb; color: #2c4a8a;
+      font-size: 0.75rem; font-weight: 500;
+      padding: 0.18rem 0.6rem; border-radius: 6px;
+    }
+    .proj-link { font-size: 0.8rem; color: var(--accent2); text-decoration: none; margin-top: 0.7rem; display: inline-block; }
+
+    /* divider */
+    hr.section-divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 860px; margin: 56px auto 0;
+    }
+
+    /* footer */
+    footer {
+      max-width: 860px;
+      margin: 48px auto 0;
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar-wrap { width: 100px; height: 100px; margin: 0 auto; }
+      .hero-text { order: 2; }
+      .avatar-wrap { order: 1; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Muhsina T. Munfa</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="section-label">PhD Applicant · NLP &amp; ML</p>
+    <h1>Muhsina Tarannum <em>Munfa</em></h1>
+    <p class="hero-tagline">Computer Science &amp; Engineering · Sylhet, Bangladesh</p>
+    <p class="hero-bio" id="about">
+      I am a Computer Science graduate from Metropolitan University, Sylhet, with a deep focus on natural language processing and 
+      machine learning — particularly in low-resource settings. My research bridges language and society: I intend to work on building NLP 
+      systems for Bengali and other underrepresented languages, and on applying AI to healthcare and human-computer interaction. 
+      I care about making AI accessible, explainable, and meaningful for communities that are often left behind by mainstream technology. 
+      I am actively seeking a PhD position where I can advance this work.
+    </p>
+    <div class="links-row">
+      <a class="link-pill primary" href="mailto:munfa2014@gmail.com">✉ Email Me</a>
+      <a class="link-pill" href="https://github.com/Munfa" target="_blank">⌥ GitHub</a>
+      <a class="link-pill" href="https://www.linkedin.com/in/munfa" target="_blank">in LinkedIn</a>
+      <a class="link-pill" href="https://scholar.google.com/citations?user=lRhSuyUAAAAJ&hl=en" target="_blank">Google Scholar</a>
+      <a class="link-pill" href="Academic_CV_of_Muhsina_Tarannum_Munfa.pdf" target="_blank">↓ CV</a>
+    </div>
+  </div>
+  <div class="avatar-wrap">
+    <!-- Replace with: <img src="photo.jpg" alt="Muhsina Tarannum Munfa" style="width:100%;height:100%;object-fit:cover;"> -->
+    <span class="avatar-placeholder">M</span>
+  </div>
+</div>
+
+<!-- RESEARCH INTERESTS -->
+<section>
+  <p class="section-label">Research Interests</p>
+  <div class="interest-tags">
+    <span class="tag">Low-Resource NLP</span>
+    <span class="tag">Bengali Language Processing</span>
+    <span class="tag">Multilingual Transformers</span>
+    <span class="tag">AI in Healthcare</span>
+    <span class="tag">Explainable AI (XAI)</span>
+    <span class="tag">Mental Health NLP</span>
+    <span class="tag">Human-Computer Interaction</span>
+    <span class="tag">Cross-lingual Transfer</span>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="section-label">Publications</p>
+  <h2>Research</h2>
+
+  <div class="pub-card">
+    <div class="pub-title">A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning</div>
+    <div class="pub-authors">Md Sultanul Islam Ovi, <strong>Muhsina Tarannum Munfa</strong>, G.M.M Miftahul Alam Adib, Syed Sabbir Hasan · 2026</div>
+    <span class="pub-badge review">Under Review</span>
+    <a class="arxiv-link" href="https://arxiv.org/abs/2601.05814" target="_blank">arXiv:2601.05814 ↗</a>
+    <div style="font-size:0.8rem; color:var(--muted); margin-top:0.4rem;">Social Network Analysis and Mining</div>
+  </div>
+
+  <div class="pub-card" style="border-left-color: var(--accent2);">
+    <div class="pub-title">Explainable AI for Chronic Kidney Disease Detection</div>
+    <div class="pub-authors"><strong>Muhsina Tarannum Munfa</strong> et al. · Manuscript Submitted</div>
+    <span class="pub-badge review">Under Review</span>
+  </div>
+
+  <div class="pub-card" style="border-left-color: var(--accent2);">
+    <div class="pub-title">Suicidal Ideation Dataset: Construction and Benchmarking</div>
+    <div class="pub-authors"><strong>Muhsina Tarannum Munfa</strong> et al. · Manuscript Submitted</div>
+    <span class="pub-badge review">Under Review</span>
+  </div>
+
+  <p class="section-label" style="margin-top:1.6rem;">Datasets</p>
+  <div class="card">
+    <div class="card-title">Bangladesh Climate and Agriculture Dataset</div>
+    <div class="card-body">A curated dataset integrating climate and agricultural variables across Bangladesh districts — designed to support environmental ML research in a data-scarce region.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">AQI Dataset for Sylhet, Bangladesh</div>
+    <div class="card-body">Derived from a larger environmental dataset; includes cleaned records, calculated AQI values, and labeled air quality categories for the Sylhet region.</div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Selected Projects</p>
+  <h2>What I've Built</h2>
+
+  <div class="project-grid">
+    <div class="proj-card">
+      <div class="proj-name">🎙 Bangla Voice Assistant for Low-Literacy Users</div>
+      <div class="proj-desc">Breaking smartphone usability barriers for digitally low-literate Bengali speakers using a lightweight voice-first interface.</div>
+      <div class="proj-tools">
+        <span class="proj-tool">BanglaSpeech2Text</span>
+        <span class="proj-tool">Intent Classification</span>
+        <span class="proj-tool">Python</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">🌫 Air Quality &amp; Health Risk Assessment System</div>
+      <div class="proj-desc">End-to-end ML system: city name → coordinate resolution → live pollutant API → XGBoost AQI prediction → PostgreSQL storage → dual dashboards.</div>
+      <div class="proj-tools">
+        <span class="proj-tool">FastAPI</span>
+        <span class="proj-tool">XGBoost</span>
+        <span class="proj-tool">PostgreSQL</span>
+        <span class="proj-tool">Streamlit</span>
+        <span class="proj-tool">Looker Studio</span>
+      </div>
+      <a class="proj-link" href="#" target="_blank">Live Demo ↗</a>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">🍳 ChefBot — RAG-Powered Cooking Assistant</div>
+      <div class="proj-desc">Full RAG pipeline ingesting PDF cookbooks, embedding via all-mpnet-base-v2, and generating grounded responses through LLaMA 3. Hallucination suppressed via strict prompt constraints.</div>
+      <div class="proj-tools">
+        <span class="proj-tool">LangChain</span>
+        <span class="proj-tool">ChromaDB</span>
+        <span class="proj-tool">LLaMA 3</span>
+        <span class="proj-tool">Gradio</span>
+      </div>
+      <a class="proj-link" href="#" target="_blank">Live Demo ↗</a>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">📰 Multi-Model News Sentiment Analysis</div>
+      <div class="proj-desc">Comparative NLP pipeline applying four sentiment models to live news — TextBlob, VADER, DistilBERT SST-2, and RoBERTa — with trend visualizations across models.</div>
+      <div class="proj-tools">
+        <span class="proj-tool">HuggingFace</span>
+        <span class="proj-tool">DistilBERT</span>
+        <span class="proj-tool">RoBERTa</span>
+        <span class="proj-tool">NewsAPI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- EXPERIENCE -->
+<section>
+  <p class="section-label">Experience</p>
+  <h2>Research &amp; Work</h2>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Research Collaborator — ResearchDen</div>
+        <div class="card-sub">Healthcare AI &amp; Machine Learning · Remote</div>
+      </div>
+      <div class="card-date">2025 – Present</div>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Contributing to dataset creation, preprocessing, and experimental design for predictive modeling studies.</li>
+        <li>Developing and evaluating explainable AI (XAI) methods for healthcare applications.</li>
+        <li>Co-authoring manuscripts; participating in literature review and research discussions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Undergraduate Thesis Researcher</div>
+        <div class="card-sub">Department of CSE, Metropolitan University Sylhet · Supervisor: Akhlak Uz Zaman Ashik</div>
+      </div>
+      <div class="card-date">Jan – Aug 2022</div>
+    </div>
+    <div class="card-body">
+      Predicted customer purchase intention using ML techniques on 12,330-session e-commerce data. Benchmarked 7 models (LR, KNN, SVM, NB, DT, RF, ANN); Random Forest and ANN performed best.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Research Scientist Intern — OpenGenus IQ</div>
+        <div class="card-sub">Open-source CS &amp; ML Knowledge Platform · Remote</div>
+      </div>
+      <div class="card-date">2022 – 2023</div>
+    </div>
+    <div class="card-body">
+      Authored technical articles on CS and ML topics for a global developer audience, sharpening the ability to communicate complex algorithms clearly.
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Skills</p>
+  <h2>Technical Stack</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <p>Python (primary), JavaScript, ReactJS (developing)</p>
+    </div>
+    <div class="skill-group">
+      <h4>Machine Learning</h4>
+      <p>Scikit-learn, XGBoost, Extra Trees, KNN, Ensemble Methods, SMOTE, LDA, Autoencoders, PyTorch</p>
+    </div>
+    <div class="skill-group">
+      <h4>NLP &amp; Transformers</h4>
+      <p>HuggingFace, DistilBERT, RoBERTa, SentenceTransformers, TextBlob, VADER, LangChain, ChromaDB, FAISS</p>
+    </div>
+    <div class="skill-group">
+      <h4>Conversational AI</h4>
+      <p>Intent classification, RAG pipelines, BanglaSpeech2Text, Groq API (LLaMA 3), Prompt Engineering</p>
+    </div>
+    <div class="skill-group">
+      <h4>Backend &amp; Data</h4>
+      <p>FastAPI, PostgreSQL, MongoDB, REST APIs, Pandas, NumPy, Matplotlib, Seaborn, SQL</p>
+    </div>
+    <div class="skill-group">
+      <h4>Deployment &amp; MLOps</h4>
+      <p>Streamlit, Gradio, Hugging Face Spaces, Render, Git, GitHub, Google Colab</p>
+    </div>
+    <div class="skill-group">
+      <h4>Research Tools</h4>
+      <p>LaTeX, Typst, Looker Studio, Exploratory Data Analysis, Feature Engineering, Academic Writing</p>
+    </div>
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <p>Bengali (native), English (professional)</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- EDUCATION -->
+<section>
+  <p class="section-label">Education</p>
+  <h2>Academic Background</h2>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">BSc in Computer Science &amp; Engineering</div>
+        <div class="card-sub">Metropolitan University, Sylhet, Bangladesh</div>
+      </div>
+      <div class="card-date">2018 – 2022</div>
+    </div>
+    <div class="card-body">GPA: 3.56 / 4.00</div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2>Contact</h2>
+  <p style="color:var(--muted); font-size:0.95rem; max-width:480px; margin-bottom:1.2rem;">
+    I'm actively looking for PhD opportunities in NLP, ML, and AI for social good. If you work in a related area or are a potential supervisor, I'd love to connect.
+  </p>
+  <div class="links-row">
+    <a class="link-pill primary" href="mailto:munfa2014@gmail.com">✉ munfa2014@gmail.com</a>
+    <a class="link-pill" href="tel:+8801302915299">📞 +880-130-291-5299</a>
+    <a class="link-pill" href="https://github.com/Munfa" target="_blank">GitHub</a>
+    <a class="link-pill" href="https://www.linkedin.com/in/munfa" target="_blank">LinkedIn</a>
+    <a class="link-pill" href="https://orcid.org" target="_blank">ORCID</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Muhsina Tarannum Munfa · Sylhet, Bangladesh</p>
+  <p style="margin-top:0.3rem;">Built with HTML &amp; hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+</footer>
+
+</body>
+</html>
